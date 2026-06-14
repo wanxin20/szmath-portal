@@ -1,0 +1,15 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+*.log
+tsconfig.tsbuildinfo
+
+# 截图/浏览器临时目录
+.shots/
+.chrome-tmp/
+.c[a-z]*/
+
+# 抓取临时数据（保留处理脚本，忽略原始抓取 JSON）
+.scraped-data/*.json
