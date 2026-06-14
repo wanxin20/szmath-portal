@@ -3,17 +3,12 @@ import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import PageHeader from './PageHeader';
 import { dateBadge } from '../lib';
-import type { Article } from '../data/announcements';
+import type { Section } from '../sections';
 
 const PAGE_SIZE = 12;
 
-interface Props {
-  title: string;
-  items: Article[];
-  basePath: string; // '/announcements' | '/news'
-}
-
-const ArticleListPage: React.FC<Props> = ({ title, items, basePath }) => {
+const ArticleListPage: React.FC<{ section: Section }> = ({ section }) => {
+  const { title, items, base: basePath } = section;
   const [page, setPage] = useState(1);
   const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
   const pageItems = items.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);

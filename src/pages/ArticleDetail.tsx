@@ -2,22 +2,12 @@ import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import PageHeader from '../components/PageHeader';
-import { announcements } from '../data/announcements';
-import { press } from '../data/press';
+import { SECTIONS, type SectionKey } from '../sections';
 import { dateBadge } from '../lib';
 
-interface Props {
-  kind: 'announcement' | 'press';
-}
-
-const META = {
-  announcement: { title: '通知公告', base: '/announcements', data: announcements },
-  press: { title: '新闻中心', base: '/news', data: press },
-};
-
-const ArticleDetail: React.FC<Props> = ({ kind }) => {
+const ArticleDetail: React.FC<{ kind: SectionKey }> = ({ kind }) => {
   const { id } = useParams<{ id: string }>();
-  const { title: sectionTitle, base, data } = META[kind];
+  const { title: sectionTitle, base, items: data } = SECTIONS[kind];
   const numId = Number(id);
   const idx = data.findIndex((a) => a.id === numId);
   const article = idx >= 0 ? data[idx] : null;

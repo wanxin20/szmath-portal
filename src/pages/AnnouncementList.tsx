@@ -1,9 +1,7 @@
 import React from 'react';
 import ArticleListPage from '../components/ArticleListPage';
-import { announcements } from '../data/announcements';
+import { SECTIONS } from '../sections';
 
-const AnnouncementList: React.FC = () => (
-  <ArticleListPage title="通知公告" items={announcements} basePath="/announcements" />
-);
+const AnnouncementList: React.FC = () => <ArticleListPage section={SECTIONS.announcement} />;
 
 export default AnnouncementList;

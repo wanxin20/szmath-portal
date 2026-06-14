@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import PageHeader from '../components/PageHeader';
 import { aboutHtml } from '../data/about';
+import { useScrollTop } from '../lib';
 
 const About: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollTop();
   return (
     <Layout>
       <PageHeader title="学会简介" crumbs={[{ label: '学会简介' }]} />

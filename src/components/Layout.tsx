@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { NAV_ITEMS, FRIEND_LINKS, COMPETITION_LINKS, COMPETITION_URL } from '../config';
+import { NAV_ITEMS, FRIEND_LINKS, COMPETITION_URL, ICP_BEIAN } from '../config';
 import { ARTICLE_CSS } from './articleStyles';
 import { ExternalLinkIcon, MailIcon, MapPinIcon } from './Icons';
 import { contactInfo } from '../data/about';
 
-/** 备案号：拿到正式号后填入，留空则不显示 */
-const ICP_BEIAN = '';
+const COPYRIGHT_YEAR = new Date().getFullYear();
 
 function isActive(pathname: string, to?: string): boolean {
   if (!to) return false;
@@ -37,7 +36,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </Link>
           <div className="flex items-center gap-2 text-sm">
             <a
-              href={COMPETITION_LINKS.login}
+              href={COMPETITION_URL}
               target="_blank"
               rel="noreferrer"
               className="px-4 py-1.5 rounded-full border border-blue-600 text-blue-700 hover:bg-blue-50 transition font-medium"
@@ -45,7 +44,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               登录
             </a>
             <a
-              href={COMPETITION_LINKS.login}
+              href={COMPETITION_URL}
               target="_blank"
               rel="noreferrer"
               className="px-4 py-1.5 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition font-medium"
@@ -128,7 +127,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
         <div className="border-t border-[#1e3a8a]">
           <div className="max-w-[1200px] mx-auto px-6 py-4 text-center text-xs text-[#7396c4]">
-            版权所有 © {new Date().getFullYear()} 深圳市数学学会 · Shenzhen Mathematical Society
+            版权所有 © {COPYRIGHT_YEAR} 深圳市数学学会 · Shenzhen Mathematical Society
             {ICP_BEIAN && (
               <>
                 <span className="mx-2">|</span>

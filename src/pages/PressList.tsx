@@ -1,9 +1,7 @@
 import React from 'react';
 import ArticleListPage from '../components/ArticleListPage';
-import { press } from '../data/press';
+import { SECTIONS } from '../sections';
 
-const PressList: React.FC = () => (
-  <ArticleListPage title="新闻中心" items={press} basePath="/news" />
-);
+const PressList: React.FC = () => <ArticleListPage section={SECTIONS.press} />;
 
 export default PressList;

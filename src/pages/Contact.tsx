@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import PageHeader from '../components/PageHeader';
 import { MailIcon, MapPinIcon } from '../components/Icons';
 import { contactInfo } from '../data/about';
+import { useScrollTop } from '../lib';
 
 const Contact: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useScrollTop();
   return (
     <Layout>
       <PageHeader title="联系我们" crumbs={[{ label: '联系我们' }]} />
