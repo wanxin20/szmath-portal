@@ -18,9 +18,6 @@ import { usePageTitle } from '../lib';
 
 const CAROUSEL = [
   { img: '/assets/carousel4.png', title: '科普报告：选题——做好数学教育研究的第一步' },
-  { img: '/assets/carousel1.png', title: '深圳市数学学会' },
-  { img: '/assets/carousel2.jpg', title: '团结深圳市广大数学工作者' },
-  { img: '/assets/carousel3.jpg', title: '开展数学科学、教育与应用研究' },
 ];
 
 const SYSTEMS = [
@@ -50,6 +47,7 @@ const SYSTEMS = [
 const Carousel: React.FC = () => {
   const [idx, setIdx] = useState(0);
   useEffect(() => {
+    if (CAROUSEL.length <= 1) return; // 单张图不轮播
     const t = setInterval(() => setIdx((i) => (i + 1) % CAROUSEL.length), 5000);
     return () => clearInterval(t);
   }, []);
@@ -66,16 +64,18 @@ const Carousel: React.FC = () => {
           </div>
         </div>
       ))}
-      <div className="absolute bottom-3 right-4 flex gap-2">
-        {CAROUSEL.map((_, i) => (
-          <button
-            key={i}
-            aria-label={`第 ${i + 1} 张`}
-            onClick={() => setIdx(i)}
-            className={`w-2.5 h-2.5 rounded-full transition ${i === idx ? 'bg-white' : 'bg-white/45'}`}
-          />
-        ))}
-      </div>
+      {CAROUSEL.length > 1 && (
+        <div className="absolute bottom-3 right-4 flex gap-2">
+          {CAROUSEL.map((_, i) => (
+            <button
+              key={i}
+              aria-label={`第 ${i + 1} 张`}
+              onClick={() => setIdx(i)}
+              className={`w-2.5 h-2.5 rounded-full transition ${i === idx ? 'bg-white' : 'bg-white/45'}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
