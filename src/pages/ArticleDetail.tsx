@@ -7,7 +7,10 @@ import { dateBadge } from '../lib';
 
 const ArticleDetail: React.FC<{ kind: SectionKey }> = ({ kind }) => {
   const { id } = useParams<{ id: string }>();
-  const { title: sectionTitle, base, items: data } = SECTIONS[kind];
+  const { title: sectionTitle, base, items: data, group } = SECTIONS[kind];
+  const crumbs = group
+    ? [{ label: group }, { label: sectionTitle, to: base }, { label: '正文' }]
+    : [{ label: sectionTitle, to: base }, { label: '正文' }];
   const numId = Number(id);
   const idx = data.findIndex((a) => a.id === numId);
   const article = idx >= 0 ? data[idx] : null;
@@ -28,7 +31,7 @@ const ArticleDetail: React.FC<{ kind: SectionKey }> = ({ kind }) => {
   if (!article) {
     return (
       <Layout>
-        <PageHeader title={sectionTitle} crumbs={[{ label: sectionTitle, to: base }, { label: '正文' }]} />
+        <PageHeader title={sectionTitle} crumbs={crumbs} />
         <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-20 text-center">
           <p className="text-slate-500 mb-4">文章不存在或已删除</p>
           <Link to={base} className="text-blue-700 font-semibold hover:underline">
@@ -41,7 +44,7 @@ const ArticleDetail: React.FC<{ kind: SectionKey }> = ({ kind }) => {
 
   return (
     <Layout>
-      <PageHeader title={sectionTitle} crumbs={[{ label: sectionTitle, to: base }, { label: '正文' }]} />
+      <PageHeader title={sectionTitle} crumbs={crumbs} />
       <div className="max-w-[1000px] mx-auto px-4 md:px-6 py-7">
         <article className="bg-white border border-slate-200 rounded-xl px-5 py-8 md:px-14 md:py-10">
           <h1 className="text-[22px] md:text-[27px] font-extrabold text-slate-800 text-center leading-relaxed mb-5">

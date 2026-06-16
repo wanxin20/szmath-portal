@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import {
   BellIcon,
   NewspaperIcon,
-  DownloadIcon,
+  BookOpenIcon,
   FileTextIcon,
   TrophyIcon,
   ArrowRightIcon,
@@ -12,7 +12,7 @@ import {
 } from '../components/Icons';
 import { announcements } from '../data/announcements';
 import { press } from '../data/press';
-import { downloads } from '../data/downloads';
+import { kepu } from '../data/kepu';
 import { COMPETITION_URL } from '../config';
 
 const CAROUSEL = [
@@ -130,23 +130,14 @@ const Home: React.FC = () => {
               <Row key={p.id} to={`/news/${p.id}`} title={p.title} date={p.date} />
             ))}
           </Panel>
-          <Panel title="资源下载" icon={<DownloadIcon size={19} />} moreTo="/downloads">
-            {downloads.slice(0, 6).map((d) => (
-              <li key={d.id} className="border-b border-dotted border-slate-100 last:border-none">
-                <a
-                  href={d.file}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-between gap-3 py-2.5 group"
-                >
-                  <span className="truncate text-[14.5px] text-slate-700 group-hover:text-blue-700 transition">
-                    <span className="text-emerald-500 mr-2 text-[11px] font-semibold">[{d.type}]</span>
-                    {d.title}
-                  </span>
-                  <span className="shrink-0 text-xs text-slate-400">{d.date}</span>
-                </a>
-              </li>
-            ))}
+          <Panel title="科学传播" icon={<BookOpenIcon size={19} />} moreTo="/kepu">
+            {kepu.length > 0 ? (
+              kepu.slice(0, 6).map((k) => (
+                <Row key={k.id} to={`/kepu/${k.id}`} title={k.title} date={k.date} />
+              ))
+            ) : (
+              <li className="py-10 text-center text-slate-400 text-sm">暂无内容</li>
+            )}
           </Panel>
         </div>
 

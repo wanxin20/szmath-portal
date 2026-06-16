@@ -58,32 +58,69 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       {/* 蓝色导航 */}
       <nav className="bg-gradient-to-r from-[#1e40af] to-[#2563eb] shadow-sm sticky top-0 z-40">
         <div className="max-w-[1200px] mx-auto px-2 md:px-6 flex flex-wrap">
-          {NAV_ITEMS.map((item) =>
-            item.to ? (
-              <Link
-                key={item.label}
-                to={item.to}
-                className={`px-4 md:px-5 py-3.5 text-[15px] transition whitespace-nowrap ${
-                  isActive(pathname, item.to)
-                    ? 'bg-white/15 text-white font-bold'
-                    : 'text-blue-50 hover:bg-white/10 hover:text-white'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ) : (
+          {NAV_ITEMS.map((item) => {
+            const itemCls = 'px-4 md:px-5 py-3.5 text-[15px] transition whitespace-nowrap';
+            const idle = 'text-blue-50 hover:bg-white/10 hover:text-white';
+            const active = 'bg-white/15 text-white font-bold';
+
+            // 带下拉子栏目的父项（科学传播）
+            if (item.children) {
+              const parentActive = item.children.some((c) => pathname.startsWith(c.to));
+              return (
+                <div key={item.label} className="relative group">
+                  <Link
+                    to={item.to || item.children[0].to}
+                    className={`${itemCls} inline-flex items-center gap-1 ${parentActive ? active : idle}`}
+                  >
+                    {item.label}
+                    <span className="text-[10px] opacity-80">▼</span>
+                  </Link>
+                  <div className="absolute left-0 top-full z-50 hidden group-hover:block min-w-[148px] bg-white shadow-xl rounded-b-lg overflow-hidden border border-slate-100">
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.to}
+                        to={c.to}
+                        className={`block px-5 py-2.5 text-sm whitespace-nowrap transition ${
+                          pathname.startsWith(c.to)
+                            ? 'text-blue-700 font-semibold bg-blue-50'
+                            : 'text-slate-700 hover:bg-blue-50 hover:text-blue-700'
+                        }`}
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            }
+
+            // 站内页面
+            if (item.to) {
+              return (
+                <Link
+                  key={item.label}
+                  to={item.to}
+                  className={`${itemCls} ${isActive(pathname, item.to) ? active : idle}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+
+            // 外部链接（竞赛系统）
+            return (
               <a
                 key={item.label}
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="px-4 md:px-5 py-3.5 text-[15px] text-blue-50 hover:bg-white/10 hover:text-white transition whitespace-nowrap inline-flex items-center gap-1"
+                className={`${itemCls} ${idle} inline-flex items-center gap-1`}
               >
                 {item.label}
                 <ExternalLinkIcon size={12} className="opacity-70" />
               </a>
-            ),
-          )}
+            );
+          })}
         </div>
       </nav>
 

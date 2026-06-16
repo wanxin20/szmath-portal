@@ -9,23 +9,36 @@ export const COMPETITION_URL = 'https://competition.szmath.com';
 /** 页脚 ICP 备案号：拿到正式号后填入，留空则不显示 */
 export const ICP_BEIAN = '';
 
+export interface NavChild {
+  label: string;
+  to: string;
+}
+
 export interface NavItem {
   label: string;
-  /** 站内路由（内部页面） */
+  /** 站内路由（内部页面）。有 children 时作为父项的默认落地页 */
   to?: string;
   /** 外部链接（竞赛系统等） */
   href?: string;
+  /** 下拉子栏目（如"科学传播"下的科普文章/科研动态） */
+  children?: NavChild[];
 }
 
-/** 顶部导航：保持与旧站一致的栏目顺序 */
+/** 顶部导航 */
 export const NAV_ITEMS: NavItem[] = [
   { label: '主页', to: '/' },
   { label: '学会简介', to: '/about' },
   { label: '通知公告', to: '/announcements' },
   { label: '新闻中心', to: '/news' },
-  { label: '资源下载', to: '/downloads' },
+  {
+    label: '科学传播',
+    to: '/kepu',
+    children: [
+      { label: '科普文章', to: '/kepu' },
+      { label: '科研动态', to: '/keyan' },
+    ],
+  },
   { label: '竞赛报名', href: COMPETITION_URL },
-  { label: '成绩查询', href: COMPETITION_URL },
   { label: '联系我们', to: '/contact' },
 ];
 

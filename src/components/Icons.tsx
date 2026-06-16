@@ -37,11 +37,11 @@ export const NewspaperIcon: React.FC<IconProps> = ({ size = 20, className, strok
   </svg>
 );
 
-export const DownloadIcon: React.FC<IconProps> = ({ size = 20, className, strokeWidth = 2 }) => (
+/** 翻开的书（科学传播/科普） */
+export const BookOpenIcon: React.FC<IconProps> = ({ size = 20, className, strokeWidth = 2 }) => (
   <svg {...base(size)} strokeWidth={strokeWidth} className={className}>
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-    <polyline points="7 10 12 15 17 10" />
-    <line x1="12" y1="15" x2="12" y2="3" />
+    <path d="M12 7v14" />
+    <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
   </svg>
 );
 

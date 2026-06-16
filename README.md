@@ -7,14 +7,18 @@
 
 | 路由 | 页面 | 数据来源 |
 |---|---|---|
-| `/` | 主页（轮播 + 通知/新闻/资源三栏 + 竞赛系统入口） | 静态 |
+| `/` | 主页（轮播 + 通知/新闻/科学传播三栏 + 竞赛系统入口） | 静态 |
 | `/about` | 学会简介（简介 + 完整章程） | `src/data/about.ts` |
-| `/announcements` `/announcements/:id` | 通知公告（19 条）列表 + 详情 | `src/data/announcements.ts` |
+| `/announcements` `/announcements/:id` | 通知公告（18 条）列表 + 详情 | `src/data/announcements.ts` |
 | `/news` `/news/:id` | 新闻中心（6 条）列表 + 详情 | `src/data/press.ts` |
-| `/downloads` | 资源下载（9 个真题 PDF） | `src/data/downloads.ts` |
+| `/kepu` `/kepu/:id` | 科学传播·科普文章 | `src/data/kepu.ts` |
+| `/keyan` `/keyan/:id` | 科学传播·科研动态（待填） | `src/data/keyan.ts` |
 | `/contact` | 联系我们 | `src/data/about.ts` |
 
-竞赛相关功能（**竞赛报名 / 成绩查询 / 登录 / 注册**）跳转到竞赛平台
+导航：主页 / 学会简介 / 通知公告 / 新闻中心 / **科学传播▾**（科普文章·科研动态）/
+**竞赛报名↗** / 联系我们。栏目元数据集中在 `src/sections.ts`。
+
+竞赛相关（**竞赛报名 / 登录 / 注册**）跳转到竞赛平台
 `https://competition.szmath.com`（见 `src/config.ts` 的 `COMPETITION_URL`）。
 
 ## 开发 / 构建

@@ -8,14 +8,15 @@ import type { Section } from '../sections';
 const PAGE_SIZE = 12;
 
 const ArticleListPage: React.FC<{ section: Section }> = ({ section }) => {
-  const { title, items, base: basePath } = section;
+  const { title, items, base: basePath, group } = section;
   const [page, setPage] = useState(1);
+  const crumbs = group ? [{ label: group }, { label: title }] : [{ label: title }];
   const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
   const pageItems = items.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <Layout>
-      <PageHeader title={title} crumbs={[{ label: title }]} />
+      <PageHeader title={title} crumbs={crumbs} />
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-7">
         <div className="bg-white border border-slate-200 rounded-xl px-4 md:px-7 py-2">
           {pageItems.length === 0 ? (
