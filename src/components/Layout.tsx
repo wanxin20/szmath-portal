@@ -34,24 +34,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </span>
             </span>
           </Link>
-          <div className="flex items-center gap-2 text-sm">
-            <a
-              href={COMPETITION_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-1.5 rounded-full border border-blue-600 text-blue-700 hover:bg-blue-50 transition font-medium"
-            >
-              登录
-            </a>
-            <a
-              href={COMPETITION_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-1.5 rounded-full bg-blue-700 text-white hover:bg-blue-800 transition font-medium"
-            >
-              注册
-            </a>
-          </div>
         </div>
       </div>
 
