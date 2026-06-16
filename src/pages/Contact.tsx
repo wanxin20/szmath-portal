@@ -3,10 +3,11 @@ import Layout from '../components/Layout';
 import PageHeader from '../components/PageHeader';
 import { MailIcon, MapPinIcon } from '../components/Icons';
 import { contactInfo } from '../data/about';
-import { useScrollTop } from '../lib';
+import { useScrollTop, usePageTitle } from '../lib';
 
 const Contact: React.FC = () => {
   useScrollTop();
+  usePageTitle('联系我们', `深圳市数学学会联系方式：邮箱 ${contactInfo.email}，地址 ${contactInfo.address}。`);
   return (
     <Layout>
       <PageHeader title="联系我们" crumbs={[{ label: '联系我们' }]} />

@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Layout from '../components/Layout';
 import PageHeader from '../components/PageHeader';
 import { SECTIONS, type SectionKey } from '../sections';
-import { dateBadge } from '../lib';
+import { dateBadge, useScrollTop, usePageTitle } from '../lib';
 
 const ArticleDetail: React.FC<{ kind: SectionKey }> = ({ kind }) => {
   const { id } = useParams<{ id: string }>();
@@ -17,16 +16,8 @@ const ArticleDetail: React.FC<{ kind: SectionKey }> = ({ kind }) => {
   const prev = idx > 0 ? data[idx - 1] : null; // 上一条 = 列表中更靠前（更新）
   const next = idx >= 0 && idx < data.length - 1 ? data[idx + 1] : null;
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    if (article) {
-      const prevTitle = document.title;
-      document.title = `${article.title} - 深圳市数学学会`;
-      return () => {
-        document.title = prevTitle;
-      };
-    }
-  }, [article]);
+  useScrollTop(id);
+  usePageTitle(article ? article.title : sectionTitle);
 
   if (!article) {
     return (

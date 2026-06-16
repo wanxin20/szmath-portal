@@ -14,6 +14,7 @@ import { announcements } from '../data/announcements';
 import { press } from '../data/press';
 import { kepu } from '../data/kepu';
 import { COMPETITION_URL } from '../config';
+import { usePageTitle } from '../lib';
 
 const CAROUSEL = [
   { img: '/assets/carousel4.png', title: '科普报告：选题——做好数学教育研究的第一步' },
@@ -113,6 +114,10 @@ const Row: React.FC<{ to: string; title: string; date: string }> = ({ to, title,
 );
 
 const Home: React.FC = () => {
+  usePageTitle(
+    undefined,
+    '深圳市数学学会官方网站——学会简介、通知公告、新闻动态、科学传播与数学竞赛信息。',
+  );
   return (
     <Layout>
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-6 md:py-8">

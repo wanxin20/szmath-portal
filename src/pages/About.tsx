@@ -1,11 +1,12 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import PageHeader from '../components/PageHeader';
-import { aboutHtml } from '../data/about';
-import { useScrollTop } from '../lib';
+import { aboutHtml, aboutIntro } from '../data/about';
+import { useScrollTop, usePageTitle } from '../lib';
 
 const About: React.FC = () => {
   useScrollTop();
+  usePageTitle('学会简介', aboutIntro);
   return (
     <Layout>
       <PageHeader title="学会简介" crumbs={[{ label: '学会简介' }]} />

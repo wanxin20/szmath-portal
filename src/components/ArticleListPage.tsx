@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Layout from './Layout';
 import PageHeader from './PageHeader';
-import { dateBadge } from '../lib';
+import { dateBadge, usePageTitle } from '../lib';
 import type { Section } from '../sections';
 
 const PAGE_SIZE = 12;
@@ -10,6 +10,7 @@ const PAGE_SIZE = 12;
 const ArticleListPage: React.FC<{ section: Section }> = ({ section }) => {
   const { title, items, base: basePath, group } = section;
   const [page, setPage] = useState(1);
+  usePageTitle(title);
   const crumbs = group ? [{ label: group }, { label: title }] : [{ label: title }];
   const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
   const pageItems = items.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
