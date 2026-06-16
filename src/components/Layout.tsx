@@ -20,19 +20,15 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <div className="min-h-screen flex flex-col bg-[#f3f7fc]">
       <style>{ARTICLE_CSS}</style>
 
-      {/* 顶部：logo + 名称 + 登录/注册 */}
+      {/* 顶部：学会 logo（图内已含名称，故不再另写文字） */}
       <div className="bg-white border-b border-slate-200">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-4">
-          <Link to="/" className="flex items-center gap-3 shrink-0">
-            <img src="/assets/SZMS_logo.png" alt="深圳市数学学会" className="h-12 w-12 object-contain" />
-            <span>
-              <span className="block text-[21px] md:text-[24px] font-black text-[#0f2a5c] tracking-wide leading-tight">
-                深圳市数学学会
-              </span>
-              <span className="hidden sm:block text-[11px] text-slate-400 tracking-[0.15em]">
-                SHENZHEN MATHEMATICAL SOCIETY
-              </span>
-            </span>
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-3 flex items-center">
+          <Link to="/" className="shrink-0">
+            <img
+              src="/assets/SZMS_logo.png"
+              alt="深圳市数学学会 Shenzhen Mathematical Society"
+              className="h-12 md:h-14 w-auto object-contain"
+            />
           </Link>
         </div>
       </div>
@@ -112,9 +108,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <footer className="bg-[#0f2a5c] text-[#9fb6d8] mt-12">
         <div className="max-w-[1200px] mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-3">
-              <img src="/assets/SZMS_logo.png" alt="" className="h-10 w-10 object-contain bg-white/90 rounded p-0.5" />
-              <b className="text-blue-50 text-base">深圳市数学学会</b>
+            <div className="mb-3">
+              <img
+                src="/assets/SZMS_logo.png"
+                alt="深圳市数学学会"
+                className="h-10 w-auto object-contain bg-white rounded-md px-2.5 py-1.5"
+              />
             </div>
             <p className="leading-7 text-[#8ba6cc] max-w-md">
               成立于 2008 年，隶属于深圳市科学技术协会，是经深圳市民政局注册的市级学术团体。团结深圳市广大数学工作者，开展数学科学、数学教育和数学应用领域的科普、交流与研究。
