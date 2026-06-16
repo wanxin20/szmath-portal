@@ -20,9 +20,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     <div className="min-h-screen flex flex-col bg-[#f3f7fc]">
       <style>{ARTICLE_CSS}</style>
 
-      {/* 顶部：学会 logo（图内已含名称，故不再另写文字） */}
+      {/* 顶部：左 logo（图内含名称） + 右联系信息 */}
       <div className="bg-white border-b border-slate-200">
-        <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-3 flex items-center">
+        <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-3.5 flex items-center justify-between gap-4">
           <Link to="/" className="shrink-0">
             <img
               src="/assets/SZMS_logo.png"
@@ -30,6 +30,16 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               className="h-12 md:h-14 w-auto object-contain"
             />
           </Link>
+          <div className="hidden lg:flex flex-col items-end gap-1.5 text-[13px] text-slate-500">
+            <span className="flex items-center gap-2">
+              <MailIcon size={15} className="text-blue-600 shrink-0" />
+              {contactInfo.email}
+            </span>
+            <span className="flex items-center gap-2">
+              <MapPinIcon size={15} className="text-blue-600 shrink-0" />
+              {contactInfo.address}
+            </span>
+          </div>
         </div>
       </div>
 
