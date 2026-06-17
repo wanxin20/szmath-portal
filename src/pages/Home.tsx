@@ -4,6 +4,7 @@ import Layout from '../components/Layout';
 import {
   BellIcon,
   NewspaperIcon,
+  BookOpenIcon,
   FileTextIcon,
   TrophyIcon,
   ArrowRightIcon,
@@ -11,6 +12,7 @@ import {
 } from '../components/Icons';
 import { announcements } from '../data/announcements';
 import { press } from '../data/press';
+import { kepu } from '../data/kepu';
 import { COMPETITION_URL } from '../config';
 import { usePageTitle } from '../lib';
 
@@ -121,8 +123,8 @@ const Home: React.FC = () => {
       <div className="max-w-[1200px] mx-auto px-4 md:px-6 py-6 md:py-8">
         <Carousel />
 
-        {/* 两栏资讯 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-7">
+        {/* 三栏资讯 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-7">
           <Panel title="通知公告" icon={<BellIcon size={19} />} moreTo="/announcements">
             {announcements.slice(0, 6).map((a) => (
               <Row key={a.id} to={`/announcements/${a.id}`} title={a.title} date={a.date} />
@@ -132,6 +134,15 @@ const Home: React.FC = () => {
             {press.slice(0, 6).map((p) => (
               <Row key={p.id} to={`/news/${p.id}`} title={p.title} date={p.date} />
             ))}
+          </Panel>
+          <Panel title="科学传播" icon={<BookOpenIcon size={19} />} moreTo="/kepu">
+            {kepu.length > 0 ? (
+              kepu.slice(0, 6).map((k) => (
+                <Row key={k.id} to={`/kepu/${k.id}`} title={k.title} date={k.date} />
+              ))
+            ) : (
+              <li className="py-10 text-center text-slate-400 text-sm">暂无内容</li>
+            )}
           </Panel>
         </div>
 
