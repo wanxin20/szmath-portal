@@ -8,7 +8,7 @@ import type { Section } from '../sections';
 const PAGE_SIZE = 12;
 
 const ArticleListPage: React.FC<{ section: Section }> = ({ section }) => {
-  const { title, items, base: basePath, group } = section;
+  const { title, items, base: basePath, group, hideDate } = section;
   const [page, setPage] = useState(1);
   usePageTitle(title);
   const crumbs = group ? [{ label: group }, { label: title }] : [{ label: title }];
@@ -29,10 +29,12 @@ const ArticleListPage: React.FC<{ section: Section }> = ({ section }) => {
                 return (
                   <li key={a.id} className="border-b border-dashed border-slate-200 last:border-none">
                     <Link to={`${basePath}/${a.id}`} className="flex items-center gap-5 py-5 group">
-                      <span className="shrink-0 w-[72px] h-[72px] bg-[#f5f9ff] border border-blue-100 rounded-lg text-center text-blue-700 flex flex-col justify-center">
-                        <span className="text-[26px] font-extrabold leading-none">{d.day}</span>
-                        <span className="text-xs text-blue-400 mt-1">{d.ym}</span>
-                      </span>
+                      {!hideDate && (
+                        <span className="shrink-0 w-[72px] h-[72px] bg-[#f5f9ff] border border-blue-100 rounded-lg text-center text-blue-700 flex flex-col justify-center">
+                          <span className="text-[26px] font-extrabold leading-none">{d.day}</span>
+                          <span className="text-xs text-blue-400 mt-1">{d.ym}</span>
+                        </span>
+                      )}
                       <span className="min-w-0 flex-1">
                         <span className="block text-[17px] text-slate-800 leading-relaxed group-hover:text-blue-700 transition font-medium line-clamp-2">
                           {a.title}

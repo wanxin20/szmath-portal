@@ -6,7 +6,7 @@ import { dateBadge, useScrollTop, usePageTitle } from '../lib';
 
 const ArticleDetail: React.FC<{ kind: SectionKey }> = ({ kind }) => {
   const { id } = useParams<{ id: string }>();
-  const { title: sectionTitle, base, items: data, group } = SECTIONS[kind];
+  const { title: sectionTitle, base, items: data, group, hideDate } = SECTIONS[kind];
   const crumbs = group
     ? [{ label: group }, { label: sectionTitle, to: base }, { label: '正文' }]
     : [{ label: sectionTitle, to: base }, { label: '正文' }];
@@ -42,8 +42,12 @@ const ArticleDetail: React.FC<{ kind: SectionKey }> = ({ kind }) => {
             {article.title}
           </h1>
           <div className="text-center text-[13px] text-slate-400 pb-5 border-b border-slate-100 mb-7">
-            <span>发布时间：{dateBadge(article.date).full}</span>
-            <span className="mx-2.5 text-slate-200">|</span>
+            {!hideDate && (
+              <>
+                <span>发布时间：{dateBadge(article.date).full}</span>
+                <span className="mx-2.5 text-slate-200">|</span>
+              </>
+            )}
             <span>来源：{article.author}</span>
             {article.type && (
               <>

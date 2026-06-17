@@ -11,13 +11,15 @@ export interface Section {
   title: string;
   base: string;
   items: Article[];
-  /** 上级栏目名（用于面包屑，如"科学传播"），无则不显示 */
+  /** 上级栏目名（用于面包屑），无则不显示 */
   group?: string;
+  /** 列表与详情不显示日期 */
+  hideDate?: boolean;
 }
 
 export const SECTIONS: Record<SectionKey, Section> = {
   announcement: { title: '通知公告', base: '/announcements', items: announcements },
   press: { title: '新闻中心', base: '/news', items: press },
-  kepu: { title: '科普文章', base: '/kepu', items: kepu, group: '科学传播' },
-  keyan: { title: '科研动态', base: '/keyan', items: keyan, group: '科学传播' },
+  kepu: { title: '科普文章', base: '/kepu', items: kepu, hideDate: true },
+  keyan: { title: '科研动态', base: '/keyan', items: keyan },
 };
