@@ -66,6 +66,15 @@ export const TrophyIcon: React.FC<IconProps> = ({ size = 24, className, strokeWi
   </svg>
 );
 
+export const MedalIcon: React.FC<IconProps> = ({ size = 22, className, strokeWidth = 2 }) => (
+  <svg {...base(size)} strokeWidth={strokeWidth} className={className}>
+    <path d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15" />
+    <path d="M11 12 5.12 2.2M13 12l5.88-9.8M8 7h8" />
+    <circle cx="12" cy="17" r="5" />
+    <path d="M12 18v-2h-.5" />
+  </svg>
+);
+
 export const ArrowRightIcon: React.FC<IconProps> = ({ size = 14, className, strokeWidth = 2.4 }) => (
   <svg {...base(size)} strokeWidth={strokeWidth} className={className}>
     <path d="M5 12h14M13 6l6 6-6 6" />

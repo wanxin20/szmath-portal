@@ -6,6 +6,7 @@ import {
   NewspaperIcon,
   FileTextIcon,
   TrophyIcon,
+  MedalIcon,
   ArrowRightIcon,
   ClipboardIcon,
 } from '../components/Icons';
@@ -173,6 +174,28 @@ const Home: React.FC = () => {
               </a>
             ))}
           </div>
+          {/* 青年科学家奖评选（单独一行入口） */}
+          <a
+            href={`${COMPETITION_URL}/#/scientist`}
+            target="_blank"
+            rel="noreferrer"
+            className="group mt-5 flex items-center gap-5 bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-rose-600/10 hover:border-rose-200"
+          >
+            <span className="w-[52px] h-[52px] shrink-0 rounded-2xl text-white flex items-center justify-center shadow-lg bg-gradient-to-br from-rose-600 to-rose-500 shadow-rose-600/30">
+              <MedalIcon size={26} />
+            </span>
+            <div className="min-w-0 flex-1">
+              <h3 className="text-lg font-bold text-slate-800 mb-0.5">青年科学家奖评选</h3>
+              <p className="text-[13px] text-slate-400">2026 大湾区 · 青年科学家奖在线申报与材料提交</p>
+            </div>
+            <span className="shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-rose-600">
+              进入申报
+              <span className="group-hover:translate-x-1 transition-transform">
+                <ArrowRightIcon size={15} />
+              </span>
+            </span>
+          </a>
+
           <p className="mt-4 text-center text-[13px] text-slate-400">
             竞赛报名、准考证打印、成绩查询等功能均在竞赛平台办理
           </p>
