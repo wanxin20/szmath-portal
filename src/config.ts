@@ -30,14 +30,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: '学会简介', to: '/about' },
   { label: '通知公告', to: '/announcements' },
   { label: '新闻中心', to: '/news' },
-  {
-    label: '科学传播',
-    to: '/kepu',
-    children: [
-      { label: '科普文章', to: '/kepu' },
-      { label: '科研动态', to: '/keyan' },
-    ],
-  },
   { label: '竞赛报名', href: COMPETITION_URL },
   { label: '联系我们', to: '/contact' },
 ];
